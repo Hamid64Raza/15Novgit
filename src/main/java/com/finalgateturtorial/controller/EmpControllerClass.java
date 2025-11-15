@@ -7,10 +7,9 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/emp")
@@ -27,6 +26,11 @@ public class EmpControllerClass {
 
         Employee employee1=empServiceClass.addEmployee(employee);
         return new ResponseEntity<>(employee1, HttpStatusCode.valueOf(200));
+    }
+    @GetMapping("/read")
+    public ResponseEntity<Object> getEmployee() {
+           List<Employee> employee=empServiceClass.getEmployee();
+        return new ResponseEntity<Object>(employee, HttpStatusCode.valueOf(200));
     }
 
 }
