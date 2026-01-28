@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 import java.util.Optional;
+
 
 @Service
 public class EmpServiceClass {
@@ -21,7 +23,11 @@ public class EmpServiceClass {
         return empRepository.save(employee);
     }
 
+
+
+    // writing methods for fetching employee details
     public List<Employee> getEmployee() {
         return empRepository.findAll();
     }
+
 }
