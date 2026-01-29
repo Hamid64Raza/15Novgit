@@ -10,6 +10,9 @@ public class Employee {
     int empId;
     String empName;
 
+    public Employee(long l, String hamid, String it, int i) {
+    }
+
     public int getEmpId() {
         return empId;
     }

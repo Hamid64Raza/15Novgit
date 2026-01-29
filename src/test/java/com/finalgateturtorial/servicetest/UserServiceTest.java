@@ -16,7 +16,6 @@ public class UserServiceTest {
     @InjectMocks
     private EmpServiceClass empServiceClass;
 
-    @Test
-    void
+
 
 }
