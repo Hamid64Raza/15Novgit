@@ -4,6 +4,7 @@ import com.finalgateturtorial.entity.Employee;
 import com.finalgateturtorial.service.EmpServiceClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
@@ -22,13 +23,10 @@ public class EmpControllerClass {
 
     @PostMapping("/create")
     public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
-        System.out.println(employee.getEmpId());
-        System.out.println(employee.getEmpName());
-        System.out.println(employee.getEmpDeparment());
-        System.out.println(employee.getEmpSalary());
-
-        Employee savedEmployee = empServiceClass.addEmployee(employee);
-        return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED); // 201 is better for creation
+        Employee saved = empServiceClass.addEmployee(employee);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(saved);
     }
 
     @GetMapping("/read")

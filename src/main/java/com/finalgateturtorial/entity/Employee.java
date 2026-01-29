@@ -5,19 +5,32 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "employee")
 public class Employee {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int empId;
-    String empName;
+    private Long empId;
 
-    public Employee(long l, String hamid, String it, int i) {
+    private String empName;
+    private String empDeparment;
+    private Double empSalary;
+
+    // No-args constructor (required by JPA)
+    public Employee() {}
+
+    // All-args constructor
+    public Employee(Long empId, String empName, String empDeparment, Double empSalary) {
+        this.empId = empId;
+        this.empName = empName;
+        this.empDeparment = empDeparment;
+        this.empSalary = empSalary;
     }
 
-    public int getEmpId() {
+    // Getters and Setters
+    public Long getEmpId() {
         return empId;
     }
 
-    public void setEmpId(int empId) {
+    public void setEmpId(Long empId) {
         this.empId = empId;
     }
 
@@ -44,7 +57,4 @@ public class Employee {
     public void setEmpSalary(Double empSalary) {
         this.empSalary = empSalary;
     }
-
-    String empDeparment;
-    Double empSalary;
 }
